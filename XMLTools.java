@@ -42,7 +42,6 @@ public class XMLTools {
             // Add the object in the ArrayList if it's not a Array
             objects.add(object);
         }
-
         try{
             // Open encoder from the file
             encoder = new XMLEncoder(new FileOutputStream(fileName));
