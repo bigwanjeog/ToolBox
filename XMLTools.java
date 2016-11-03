@@ -4,7 +4,6 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 /**
  * Created by RENAUD on 25/10/2016.
@@ -19,9 +18,7 @@ public class XMLTools {
         // Try to read and recover the object in the XML file
         try {
             ArrayList<T> tempObjects = readXML(fileName);
-            Iterator<T> iterator = tempObjects.iterator();
-            while(iterator.hasNext()) {
-                T tempObject = iterator.next();
+            for(T tempObject : tempObjects){
                 //Put the object in an ArrayList
                 objects.add(tempObject);
             }
@@ -32,9 +29,7 @@ public class XMLTools {
         // Check if the attribute object is an Array or an Object
         try{
             ArrayList<T> tempObjects = (ArrayList) object;
-            Iterator<T> iterator = tempObjects.iterator();
-            while(iterator.hasNext()) {
-                T tempObject = iterator.next();
+            for(T tempObject : tempObjects){
                 // Put the object in an ArrayList
                 objects.add(tempObject);
             }
@@ -47,7 +42,6 @@ public class XMLTools {
             // Open encoder from the file
             encoder = new XMLEncoder(new FileOutputStream(fileName));
 
-            //objects.add(object);
             // Serialization of the object
             encoder.writeObject(objects);
             encoder.flush();
